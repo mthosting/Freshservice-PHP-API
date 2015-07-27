@@ -52,7 +52,7 @@ class Freshservice {
 		$http_status = curl_getinfo($this->_curlConnection, CURLINFO_HTTP_CODE);
 	
 		if( !preg_match( '/2\d\d/', $http_status ) ) {
-			throw new FreshserviceException('HTTP error in Excec method');
+			throw new FreshserviceException($httpResponse);
 		}
 	
 		return json_decode($httpResponse);
